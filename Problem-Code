@@ -1,0 +1,26 @@
+class Solution {
+    public int minNumberOfHours(int initialEnergy, int initialExp, int[] energy, int[] exp) {
+    int n=energy.length,mth=0,mhe=0,mhexp=0; 
+    for(int i=0 ; i<n ; i++){
+      if(initialEnergy>energy[i]){
+       initialEnergy-=energy[i];
+      }
+      else{
+       mhe=(energy[i]-initialEnergy+1);
+       initialEnergy+=mhe;
+       initialEnergy-=energy[i];
+      }
+      if(initialExp>exp[i]){
+       initialExp+=exp[i];
+      }
+      else{
+       mhexp=(exp[i]-initialExp+1);
+       initialExp+=mhexp;
+       initialExp+=exp[i];
+      }
+    mth=mth+(mhe+mhexp);
+    mhe=0;mhexp=0;
+     }
+    return mth;
+    }
+}
